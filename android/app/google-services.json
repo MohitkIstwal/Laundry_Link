@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1004506178454",
+    "project_id": "laundry-link-30f3a",
+    "storage_bucket": "laundry-link-30f3a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1004506178454:android:22e9893882b67c895333b7",
+        "android_client_info": {
+          "package_name": "com.example.laundry_link"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRz21wZ_Ky-SMRpBFT59-1GCdWR68GQHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
