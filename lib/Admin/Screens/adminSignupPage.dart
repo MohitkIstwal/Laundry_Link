@@ -1,24 +1,23 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:laundry_link/User/models/user_model.dart';
-import '../../components/my_button.dart';
-import '../../components/my_textField.dart';
 import '../../../routes/app_routes.dart';
-import '../../services/auth/auth_service.dart';
+import '../Services/auth/admin_auth_service.dart';
+import '../components/admin_my_button.dart';
+import '../components/admin_my_textField.dart';
 
-class RegisterPage extends StatefulWidget {
+class AdminSignUpPage extends StatefulWidget {
   final Function()? onTap;
 
-  const RegisterPage({
+  const AdminSignUpPage({
     super.key,
     required this.onTap,
   });
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<AdminSignUpPage> createState() => _RegisterPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegisterPageState extends State<AdminSignUpPage> {
   final TextEditingController _emailcontroller = TextEditingController();
   final TextEditingController _namecontroller = TextEditingController();
   final TextEditingController _userNamecontroller = TextEditingController();
@@ -26,24 +25,24 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _confirmpasswordcontroller = TextEditingController();
 
   void  register(BuildContext context) async {
-    final authService = AuthService();
+    final authService = AdminAuthService();
 
     userModel newUser = userModel(
-      name: _namecontroller.text,
-      userName: _userNamecontroller.text,
-      emailId: _emailcontroller.text,
-      password: _passwordcontroller.text
+        name: _namecontroller.text,
+        userName: _userNamecontroller.text,
+        emailId: _emailcontroller.text,
+        password: _passwordcontroller.text
     );
 
     if(_passwordcontroller.text == _confirmpasswordcontroller.text){
       try{
-         await authService.signUpEmailPassword(
-             _emailcontroller.text,
-             _passwordcontroller.text,
-             _userNamecontroller.text,
-             newUser,
-             context
-         );
+        await authService.signUpEmailPassword(
+            _emailcontroller.text,
+            _passwordcontroller.text,
+            _userNamecontroller.text,
+            newUser,
+            context
+        );
       }catch(e){
         showDialog(
             context: context,
@@ -82,9 +81,10 @@ class _RegisterPageState extends State<RegisterPage> {
           children: [
 
             const Icon(
-              Icons.add,
+              Icons.message,
               size: 70,
             ),
+
             const SizedBox(height: 30),
 
             MyTextField(htext: 'Name', obscureText: false, controller: _namecontroller),

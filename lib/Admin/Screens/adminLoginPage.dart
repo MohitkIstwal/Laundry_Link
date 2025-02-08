@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:laundry_link/routes/app_routes.dart';
-import '../../components/my_button.dart';
-import '../../components/my_textField.dart';
-import '../../services/auth/auth_service.dart';
+import '../Services/auth/admin_auth_service.dart';
+import '../components/admin_my_button.dart';
+import '../components/admin_my_textField.dart';
 
-class Loginpage extends StatefulWidget {
+class AdminLoginpage extends StatefulWidget {
   final Function()? onTap;
 
-  const Loginpage({
+  const AdminLoginpage({
     super.key,
     required this.onTap,
   });
 
   @override
-  State<Loginpage> createState() => _LoginpageState();
+  State<AdminLoginpage> createState() => _LoginpageState();
 }
 
-class _LoginpageState extends State<Loginpage> {
+class _LoginpageState extends State<AdminLoginpage> {
 
   final TextEditingController _userNamecontroller = TextEditingController();
   final TextEditingController _passwordcontroller = TextEditingController();
 
   void login(BuildContext context) async {
-    final authService = AuthService();
+    final authService = AdminAuthService();
 
     try{
       await authService.signInEmailPassword(_userNamecontroller.text, _passwordcontroller.text);
@@ -35,12 +34,6 @@ class _LoginpageState extends State<Loginpage> {
           )
       );
     }
-
-    Navigator.pushNamed(
-      context,
-      AppRoutes.home,
-      arguments: {'source' : 'login', 'data': "${_userNamecontroller.text}"},
-    );
   }
 
   @override
@@ -51,10 +44,11 @@ class _LoginpageState extends State<Loginpage> {
           children: [
 
             const Icon(
-              Icons.add,
+              Icons.message,
               size: 70,
             ),
             const SizedBox(height: 30),
+
 
             MyTextField(htext: 'Username', obscureText: false, controller: _userNamecontroller),
 
@@ -70,13 +64,13 @@ class _LoginpageState extends State<Loginpage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                      "*Term and Conditions apply",
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 15,
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.w500,
-                      ),
+                    "*Term and Conditions apply",
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 15,
+                      fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ],
               ),

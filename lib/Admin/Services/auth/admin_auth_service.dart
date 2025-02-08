@@ -1,14 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class AuthService {
+class AdminAuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<UserCredential> signInEmailPassword(String userName,password) async {
     try{
-      DocumentSnapshot doc = await FirebaseFirestore.instance.collection('users').doc(userName).get();
+      DocumentSnapshot doc = await FirebaseFirestore.instance.collection('admin').doc(userName).get();
       String email;
       try {
         Map<String, dynamic> userData = doc.data() as Map<String, dynamic>;
@@ -24,9 +24,9 @@ class AuthService {
   }
 
   Future<UserCredential?> signUpEmailPassword(
-      String email, String password, String username, dynamic userModel, BuildContext context) async {
+      String email, String password, String username, dynamic AdminModel, BuildContext context) async {
 
-    DocumentSnapshot doc = await _firestore.collection('users').doc(username).get();
+    DocumentSnapshot doc = await _firestore.collection('admin').doc(username).get();
     final bool exists = doc.exists;
 
     if (exists) {
@@ -49,14 +49,14 @@ class AuthService {
     else {
       try {
         UserCredential userCredential =
-            await _auth.createUserWithEmailAndPassword(
+        await _auth.createUserWithEmailAndPassword(
           email: email,
           password: password,
         );
         await _firestore
-            .collection('users')
+            .collection('admin')
             .doc(username)
-            .set(userModel.toMap());
+            .set(AdminModel.toMap());
         if (exists) {
           return null;
         } else {
@@ -68,7 +68,7 @@ class AuthService {
     }
   }
 
-  Future<void> signOut() async {
+  Future<void> adminSignOut() async {
     return await _auth.signOut();
   }
 }

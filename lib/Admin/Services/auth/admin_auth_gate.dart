@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:laundry_link/User/Screens/HomePage.dart';
-import 'LogorReg.dart';
 
-class AuthGate extends StatelessWidget {
-  const AuthGate({super.key});
+import '../../Screens/adminHomeScreen.dart';
+import 'admin_LogOrReg.dart';
+
+class AdminAuthGate extends StatelessWidget {
+  const AdminAuthGate({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +14,9 @@ class AuthGate extends StatelessWidget {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot){
             if(snapshot.hasData && snapshot.data != null){
-              return const Homepage();
+              return const AdminHomeScreen();
             }else{
-              return const LogOrReg();
+              return const AdminLogOrReg();
             }
           }
       ),
