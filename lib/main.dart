@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:laundry_link/common/WelcomeScreen.dart';
 import 'package:laundry_link/routes/app_routes.dart';
-import 'Admin/Services/auth/admin_auth_gate.dart';
-import 'User/services/auth/auth_gate.dart';
+import 'Staff/StaffService/auth/StaffAuthGate.dart';
 import 'firebase_options.dart';
 
 
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const AdminAuthGate(),
+      home: WelcomeScreen(),
       routes: AppRoutes.getRoutes(),
     );
   }

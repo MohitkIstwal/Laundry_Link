@@ -1,13 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:laundry_link/User/services/auth/LogorReg.dart';
-import 'package:laundry_link/common/WelcomeScreen.dart';
+import 'package:laundry_link/Staff/StaffScreens/StaffHome.dart';
+import 'StaffLogOrReg.dart';
 
-import '../../Screens/adminHomeScreen.dart';
-import 'admin_LogOrReg.dart';
-
-class AdminAuthGate extends StatelessWidget {
-  const AdminAuthGate({super.key});
+class StaffAuthGate extends StatelessWidget {
+  const StaffAuthGate({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +13,9 @@ class AdminAuthGate extends StatelessWidget {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot){
             if(snapshot.hasData && snapshot.data != null){
-              return const AdminHomeScreen();
+              return const StaffHome();
             }else{
-              return const AdminLogOrReg();
+              return const StaffLogOrReg();
             }
           }
       ),

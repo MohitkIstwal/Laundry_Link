@@ -68,6 +68,11 @@ class AdminAuthService {
     }
   }
 
+  User? adminCurrentUser() {
+    return _auth.currentUser;
+  }
+
+
   Future<void> adminSignOut() async {
     return await _auth.signOut();
   }
