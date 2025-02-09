@@ -39,7 +39,7 @@ class _LoginpageState extends State<Loginpage> {
     Navigator.pushNamed(
       context,
       AppRoutes.home,
-      arguments: {'source' : 'login', 'data': "${_userNamecontroller.text}"},
+      arguments: {'source' : 'login', 'data': _userNamecontroller.text},
     );
   }
 

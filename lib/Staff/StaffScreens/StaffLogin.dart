@@ -51,7 +51,7 @@ class _LoginpageState extends State<StaffLoginpage> {
             ),
             const SizedBox(height: 30),
 
-            Text("Staff Login"),
+            const Text("Staff Login"),
 
             const SizedBox(height: 30),
 

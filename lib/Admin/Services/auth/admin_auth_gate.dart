@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:laundry_link/User/services/auth/LogorReg.dart';
-import 'package:laundry_link/common/WelcomeScreen.dart';
 
 import '../../Screens/adminHomeScreen.dart';
 import 'admin_LogOrReg.dart';

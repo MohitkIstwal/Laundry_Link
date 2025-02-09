@@ -1,5 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:laundry_link/Admin/Services/UserAndServiceList/UserList.dart';
+import 'package:laundry_link/Admin/components/admin_my_button.dart';
 import 'package:laundry_link/Admin/components/admin_my_drawer.dart';
+import 'package:laundry_link/routes/app_routes.dart';
 
 class AdminHomeScreen extends StatefulWidget {
   const AdminHomeScreen({super.key});
@@ -18,6 +22,26 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
 
       ),
       drawer: const AdminDrawer(),
+      body: Column(
+        children: [
+          MyButton(text: "Users List", onTap: () {
+            Navigator.pushNamed(
+                context,
+                AppRoutes.adminUser
+            );
+          }),
+
+          const SizedBox(height: 30),
+
+          MyButton(text: "Stores List", onTap: (){
+            Navigator.pushNamed(
+                context,
+                AppRoutes.adminStore
+            );
+          } ),
+
+        ],
+      ),
     );
   }
 }

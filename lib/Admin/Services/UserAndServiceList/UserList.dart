@@ -1,29 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:laundry_link/Staff/StaffService/UserService/UserService.dart';
-import 'package:laundry_link/Staff/component/Staff_Drawer.dart';
 
-import '../../routes/app_routes.dart';
-import '../component/UserTIle.dart';
+import '../../../Staff/StaffService/UserService/UserService.dart';
+import '../../../Staff/component/UserTIle.dart';
+import '../../../routes/app_routes.dart';
 
-class StaffHome extends StatefulWidget {
-  const StaffHome({super.key});
+class UserList extends StatefulWidget {
+  UserList({super.key});
+
   @override
-  State<StaffHome> createState() => _StaffHomeState();
+  State<UserList> createState() => _UserListState();
 }
 
-class _StaffHomeState extends State<StaffHome> {
-
+class _UserListState extends State<UserList> {
   UserService userService = UserService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Staff Home"),
-        centerTitle: true,
+        title: const Text("User List"),
       ),
-      drawer: const StaffDrawer(),
-      body : _buildUserList(),
+      body: _buildUserList(),
     );
   }
 
@@ -49,14 +46,14 @@ class _StaffHomeState extends State<StaffHome> {
 
   Widget _buildUserListItem(Map<String,dynamic> userData){
     return UserTile(
-      storeName: userData['userName'],
-      onTap: (){
-        Navigator.pushNamed(
-            context,
-            AppRoutes.storeUser,
-            arguments:userData['userName']
-        );
-      }
+        storeName: userData['userName'],
+        onTap: (){
+          Navigator.pushNamed(
+              context,
+              AppRoutes.storeUser,
+              arguments:userData['userName']
+          );
+        }
     );
   }
 }
