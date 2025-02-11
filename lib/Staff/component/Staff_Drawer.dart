@@ -40,9 +40,9 @@ class StaffDrawer extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    leading: Icon(
+                    leading: const Icon(
                       Icons.home,
-                      color: isDarkMode? Colors.white : Colors.grey,
+                      color:Colors.grey,
                     ),
                     onTap: () {
                       Navigator.pop(context);
