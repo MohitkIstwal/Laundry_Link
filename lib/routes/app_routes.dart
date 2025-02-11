@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_link/Admin/Services/UserAndServiceList/UserList.dart';
+import 'package:laundry_link/Staff/StaffScreens/ServiceListScreen.dart';
+import 'package:laundry_link/Staff/StaffScreens/StaffHome.dart';
 import 'package:laundry_link/User/services/auth/auth_gate.dart';
 import '../Admin/Services/UserAndServiceList/StoreList.dart';
 import '../Admin/Services/auth/admin_auth_gate.dart';
@@ -21,6 +23,8 @@ class AppRoutes {
   static const String storeUser = '/storeUser';
   static const String adminUser = '/adminUser';
   static const String adminStore = '/adminstore';
+  static const String staffHome = '/staffHome';
+  static const String ServiceList = '/ServiceList';
 
   static Map<String, WidgetBuilder> getRoutes() {
     return {
@@ -32,8 +36,10 @@ class AppRoutes {
       staffgate: (context) => const StaffAuthGate(),
       storePage: (context) => const StorePage(),
       storeUser: (context) => const Userscreen(),
-      adminUser: (context) => UserList(),
-      adminStore: (context) => StoreList(),
+      adminUser: (context) => const UserList(),
+      adminStore: (context) => const StoreList(),
+      staffHome: (context) => const StaffHome(),
+      ServiceList: (context) => const ServiceListScreen(),
     };
   }
 }

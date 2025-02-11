@@ -3,7 +3,12 @@ import '../../routes/app_routes.dart';
 import '../StaffService/auth/StaffAuthService.dart';
 
 class StaffDrawer extends StatelessWidget {
-  const StaffDrawer({super.key});
+  final String userName;
+
+  const StaffDrawer({
+    super.key,
+    required this.userName
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +69,31 @@ class StaffDrawer extends StatelessWidget {
                       Navigator.pushNamed(
                           context,
                           AppRoutes.setting
+                      );
+                    },
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.only(left: 25),
+                  child: ListTile(
+                    title: const Text(
+                      "S E R V I C I E S",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    leading: const Icon(
+                      Icons.cleaning_services,
+                      color: Colors.grey,
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.pushNamed(
+                          context,
+                          AppRoutes.ServiceList,
+                          arguments: userName
                       );
                     },
                   ),

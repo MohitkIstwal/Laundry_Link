@@ -4,7 +4,7 @@ import '../../../User/components/StoreTile.dart';
 import '../../../routes/app_routes.dart';
 
 class StoreList extends StatefulWidget {
-  StoreList({super.key});
+  const StoreList({super.key});
   @override
   State<StoreList> createState() => _StoreListState();
 }

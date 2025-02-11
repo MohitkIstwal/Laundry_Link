@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_link/Staff/component/Staff_Button.dart';
 
+import '../../routes/app_routes.dart';
 import '../StaffService/auth/StaffAuthService.dart';
 import '../component/Staff_TextField.dart';
 
@@ -36,6 +37,11 @@ class _LoginpageState extends State<StaffLoginpage> {
       );
     }
 
+    Navigator.pushNamed(
+      context,
+      AppRoutes.staffHome,
+      arguments: _userNamecontroller.text,
+    );
   }
 
   @override

@@ -5,7 +5,7 @@ import '../../../Staff/component/UserTIle.dart';
 import '../../../routes/app_routes.dart';
 
 class UserList extends StatefulWidget {
-  UserList({super.key});
+  const UserList({super.key});
 
   @override
   State<UserList> createState() => _UserListState();

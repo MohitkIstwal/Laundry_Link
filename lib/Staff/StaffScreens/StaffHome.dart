@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:laundry_link/Staff/StaffService/UserService/UserService.dart';
 import 'package:laundry_link/Staff/component/Staff_Drawer.dart';
+import 'package:laundry_link/User/services/fetchData/FetchData.dart';
 
 import '../../routes/app_routes.dart';
 import '../component/UserTIle.dart';
@@ -17,12 +19,14 @@ class _StaffHomeState extends State<StaffHome> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+  final String? userName = ModalRoute.of(context)?.settings.arguments as String?;
+
+  return Scaffold(
       appBar: AppBar(
-        title: const Text("Staff Home"),
+        title:  Text(userName ?? "Hii"),
         centerTitle: true,
       ),
-      drawer: const StaffDrawer(),
+      drawer: StaffDrawer(userName: userName!),
       body : _buildUserList(),
     );
   }
