@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_link/Staff/StaffService/ServiceList/ServiceList.dart';
-
-import '../../Staff/component/UserTIle.dart';
+import '../../routes/app_routes.dart';
+import '../components/StoreTile.dart';
 
 class StorePage extends StatefulWidget {
   const StorePage({super.key});
@@ -37,22 +37,21 @@ class _StorePageState extends State<StorePage> {
         }
         return ListView(
           children: snapshot.data!
-              .map<Widget>((storeData) => _buildServiceListItem(storeData))
+              .map<Widget>((storeData) => _buildServiceListItem(storeData,storeName))
               .toList(),
         );
       },
     );
   }
 
-  Widget _buildServiceListItem(Map<String,dynamic> userData){
-    return UserTile(
+  Widget _buildServiceListItem(Map<String,dynamic> userData,String storeName){
+    return StoreTile(
       storeName: userData['ServiceName'],
       onTap: () {
-        showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(title: Text(userData['ServiceName']));
-          },
+        Navigator.pushNamed(
+            context,
+            AppRoutes.UserItemPage,
+            arguments: {'serviceName': userData['ServiceName'], 'storeName': storeName}
         );
       },
     );

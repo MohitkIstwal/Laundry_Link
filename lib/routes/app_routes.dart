@@ -5,9 +5,11 @@ import 'package:laundry_link/Staff/StaffScreens/StaffHome.dart';
 import 'package:laundry_link/User/services/auth/auth_gate.dart';
 import '../Admin/Services/UserAndServiceList/StoreList.dart';
 import '../Admin/Services/auth/admin_auth_gate.dart';
+import '../Staff/StaffScreens/ItemListScreen.dart';
 import '../Staff/StaffScreens/UserScreen.dart';
 import '../Staff/StaffService/auth/StaffAuthGate.dart';
 import '../User/Screens/HomePage.dart';
+import '../User/Screens/ItemPage.dart';
 import '../User/Screens/SettingPage.dart';
 import '../User/Screens/StorePage.dart';
 import '../User/Screens/userPage.dart';
@@ -25,6 +27,8 @@ class AppRoutes {
   static const String adminStore = '/adminstore';
   static const String staffHome = '/staffHome';
   static const String ServiceList = '/ServiceList';
+  static const String itemList = '/itemlist';
+  static const String UserItemPage = '/UserItemPage';
 
   static Map<String, WidgetBuilder> getRoutes() {
     return {
@@ -40,6 +44,8 @@ class AppRoutes {
       adminStore: (context) => const StoreList(),
       staffHome: (context) => const StaffHome(),
       ServiceList: (context) => const ServiceListScreen(),
+      itemList: (context) => const ItemListScreen(),
+      UserItemPage: (context) => const Itempage(),
     };
   }
 }

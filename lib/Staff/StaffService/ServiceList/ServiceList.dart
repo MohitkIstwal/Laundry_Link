@@ -18,6 +18,17 @@ class ServiceList{
     });
   }
 
+  Stream<List<String>> getItemList(String storeName, String serviceName) {
+    return _firestore.collection(storeName).doc(serviceName).snapshots().map((snapshot) {
+      final data = snapshot.data(); // Get document data
+      if (data != null && data.containsKey('ItemList')) {
+        return List<String>.from(data['ItemList']); // Extract 'ItemList' and return as List
+      } else {
+        return []; // Return empty list if 'ItemList' does not exist
+      }
+    });
+  }
+
   Future<void> addServiceToStore(String storeName,serviceName,String newService) async {
     FirebaseFirestore db = FirebaseFirestore.instance;
     await db.collection(storeName).doc(serviceName).update({

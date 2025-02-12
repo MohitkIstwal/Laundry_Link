@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:laundry_link/Staff/StaffService/ServiceList/ServiceList.dart';
 import 'package:laundry_link/Staff/model/StaffServiceModel.dart';
+import '../../routes/app_routes.dart';
 import '../component/UserTIle.dart';
 
 class ServiceListScreen extends StatefulWidget {
@@ -18,7 +19,6 @@ class _ServiceListScreenState extends State<ServiceListScreen> {
 
   ServiceList serviceList = ServiceList();
   final TextEditingController _textController = TextEditingController();
-  List<String> l = [""];
 
   @override
   void didChangeDependencies() {
@@ -99,15 +99,11 @@ class _ServiceListScreenState extends State<ServiceListScreen> {
     return UserTile(
       storeName: userData['ServiceName'],
       onTap: () {
-        l.add("Hello");
-        StaffServiceModel ssm = StaffServiceModel(ServiceName: userData['ServiceName'], ItemList: l);
-        serviceList.createServiceList(userData['ServiceName'], storeName, ssm);
-        showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(title: Text(userData['ServiceName']));
-          },
-        );
+          Navigator.pushNamed(
+              context,
+              AppRoutes.itemList,
+              arguments: {'serviceName' : userData['ServiceName'], 'storeName' : storeName!}
+          );
       },
     );
   }
@@ -131,7 +127,7 @@ class _ServiceListScreenState extends State<ServiceListScreen> {
               onPressed: () {
                 String enteredText = _textController.text.trim();
                 if (enteredText.isNotEmpty) {
-                  StaffServiceModel ssm = StaffServiceModel(ServiceName: enteredText, ItemList: l);
+                  StaffServiceModel ssm = StaffServiceModel(ServiceName: enteredText, ItemList: []);
                   serviceList.createServiceList(enteredText, storeName, ssm);
                   _textController.clear();
                 }

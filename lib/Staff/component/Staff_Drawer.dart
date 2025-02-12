@@ -13,7 +13,6 @@ class StaffDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    bool isDarkMode = false;
     return Drawer(
         backgroundColor: Colors.white,
         child: Column(
