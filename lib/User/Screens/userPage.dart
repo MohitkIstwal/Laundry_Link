@@ -10,43 +10,46 @@ class Userpage extends StatefulWidget {
   State<Userpage> createState() => _UserpageState();
 }
 
-class _UserpageState extends State<Userpage>{
-
+class _UserpageState extends State<Userpage> {
   final FetchData fetchData = FetchData();
 
   @override
   Widget build(BuildContext context) {
-    final String username = ModalRoute.of(context)!.settings.arguments as String;
+    final String username =
+        ModalRoute.of(context)!.settings.arguments as String;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Profile"),
-        centerTitle: true,
-      ),
-      body: _buildUserProfile(username)
-    );
+        appBar: AppBar(
+          title: const Text("Profile"),
+          centerTitle: true,
+        ),
+        body: _buildUserProfile(username));
   }
 
   Widget _buildUserProfile(String userId) {
     return FutureBuilder<Map<String, dynamic>>(
-      future: fetchData.fetchUserById("test"), // ✅ Correct way to call future
+      future: fetchData.fetchUserById(userId),
+      //Hii there
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator()); // ✅ Show loading
+          return const Center(
+              child: CircularProgressIndicator()); // ✅ Show loading
         } else if (snapshot.hasError) {
-          return Center(child: Text("Error: ${snapshot.error}")); // ✅ Show error
+          return Center(
+              child: Text("Error: ${snapshot.error}")); // ✅ Show error
         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-          return const Center(child: Text("User not found")); // ✅ Handle missing data
+          return const Center(
+              child: Text("User not found")); // ✅ Handle missing data
         }
 
         Map<String, dynamic> userData = snapshot.data!;
 
-         return _buildList(userData);
+        return _buildList(userData);
       },
     );
   }
 
-  Widget _buildList(Map<String, dynamic> userData){
+  Widget _buildList(Map<String, dynamic> userData) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
