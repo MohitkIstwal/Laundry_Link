@@ -4,13 +4,13 @@ import 'package:laundry_link/common/WelcomeScreen.dart';
 import 'package:laundry_link/routes/app_routes.dart';
 import 'firebase_options.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
