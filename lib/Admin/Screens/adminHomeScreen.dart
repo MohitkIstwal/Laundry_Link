@@ -17,27 +17,25 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
       appBar: AppBar(
         title: const Text("Admin Home"),
         centerTitle: true,
-
       ),
       drawer: const AdminDrawer(),
       body: Column(
         children: [
-          MyButton(text: "Users List", onTap: () {
-            Navigator.pushNamed(
-                context,
-                AppRoutes.adminUser
-            );
-          }),
-
+          MyButton(
+              text: "Users List",
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutes.adminUser);
+              },
+              color: Colors.grey,
+              textColor: Colors.white),
           const SizedBox(height: 30),
-
-          MyButton(text: "Stores List", onTap: (){
-            Navigator.pushNamed(
-                context,
-                AppRoutes.adminStore
-            );
-          } ),
-
+          MyButton(
+              text: "Stores List",
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutes.adminStore);
+              },
+              color: Colors.grey,
+              textColor: Colors.white),
         ],
       ),
     );

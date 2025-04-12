@@ -27,3 +27,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+// grey and orange(admmin)
+
+// blue and white (customer)
+
+//maroon and white(store)
